@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repository_id: 1
+  name: MyString
+  severity: MyString
+  description: MyString
+  reference_url: MyString
+  dependency: MyString
+
+two:
+  repository_id: 1
+  name: MyString
+  severity: MyString
+  description: MyString
+  reference_url: MyString
+  dependency: MyString

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Repository:</strong>
+  <%= @issue.repository_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @issue.name %>
+</p>
+
+<p>
+  <strong>Severity:</strong>
+  <%= @issue.severity %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @issue.description %>
+</p>
+
+<p>
+  <strong>Reference url:</strong>
+  <%= @issue.reference_url %>
+</p>
+
+<p>
+  <strong>Dependency:</strong>
+  <%= @issue.dependency %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>
