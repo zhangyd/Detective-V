@@ -11,24 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719023926) do
+ActiveRecord::Schema.define(version: 20160815181335) do
 
   create_table "issues", force: :cascade do |t|
-    t.integer  "repository_id"
-    t.string   "name"
-    t.string   "severity"
+    t.integer  "severity"
+    t.string   "source"
     t.string   "description"
-    t.string   "reference_url"
-    t.string   "dependency"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.text     "detail"
+    t.string   "fingerprint"
+    t.integer  "scan_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "repo_id"
+    t.string   "scanner"
+    t.string   "file"
+    t.string   "line"
+    t.string   "code"
   end
 
-  create_table "repositories", force: :cascade do |t|
-    t.string   "repo_name"
-    t.string   "url"
+  add_index "issues", ["repo_id"], name: "index_issues_on_repo_id"
+  add_index "issues", ["scan_id"], name: "index_issues_on_scan_id"
+
+  create_table "repos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "owner"
+    t.string   "full_name"
+    t.string   "html_url"
+    t.string   "description"
+    t.string   "language"
+    t.integer  "size"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "scans", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "repo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "scans", ["repo_id"], name: "index_scans_on_repo_id"
 
 end

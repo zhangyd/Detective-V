@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @scan.status %>
+</p>
+
+<p>
+  <strong>Repo:</strong>
+  <%= @scan.repo %>
+</p>
+
+<%= link_to 'Edit', edit_scan_path(@scan) %> |
+<%= link_to 'Back', scans_path %>

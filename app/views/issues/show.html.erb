@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Repository:</strong>
-  <%= @issue.repository_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @issue.name %>
-</p>
-
-<p>
   <strong>Severity:</strong>
   <%= @issue.severity %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @issue.source %>
 </p>
 
 <p>
@@ -21,13 +16,18 @@
 </p>
 
 <p>
-  <strong>Reference url:</strong>
-  <%= @issue.reference_url %>
+  <strong>Detail:</strong>
+  <%= @issue.detail %>
 </p>
 
 <p>
-  <strong>Dependency:</strong>
-  <%= @issue.dependency %>
+  <strong>Fingerprint:</strong>
+  <%= @issue.fingerprint %>
+</p>
+
+<p>
+  <strong>Scan:</strong>
+  <%= @issue.scan %>
 </p>
 
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
