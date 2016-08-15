@@ -29,6 +29,11 @@ class ScansController < ApplicationController
     lang = repo.language
     status = "No known vulnerabilities"
 
+    @scan = Scan.new(
+      repo_id: repo.id,
+      status: status
+    )
+
     if lang == nil
     else
       tasks = Settings.pipeline.tasks_for[lang].split(",")
@@ -54,7 +59,7 @@ class ScansController < ApplicationController
       findings = tracker.findings
 
       findings.each do |finding|
-        status = "Vulnerabilities found"
+        @scan.status = "Vulnerabilities found"
         Issue.create(
           severity: finding.severity,
           source: finding.source,
@@ -70,13 +75,8 @@ class ScansController < ApplicationController
       end
     end
 
-    @scan = Scan.create(
-      repo_id: repo.id,
-      status: status
-    )
-
     respond_to do |format|
-      if @scan
+      if @scan.save
         format.html { redirect_to @scan, notice: 'Scan was successfully created.' }
         format.json { render :show, status: :created, location: @scan }
       else
