@@ -5,12 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Repository</th>
-      <th>Name</th>
       <th>Severity</th>
+      <th>Source</th>
       <th>Description</th>
-      <th>Reference url</th>
-      <th>Dependency</th>
+      <th>Detail</th>
+      <th>Fingerprint</th>
+      <th>Repo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,12 +18,12 @@
   <tbody>
     <% @issues.each do |issue| %>
       <tr>
-        <td><%= issue.repository_id %></td>
-        <td><%= issue.name %></td>
         <td><%= issue.severity %></td>
+        <td><%= issue.source %></td>
         <td><%= issue.description %></td>
-        <td><%= issue.reference_url %></td>
-        <td><%= issue.dependency %></td>
+        <td><%= issue.detail %></td>
+        <td><%= issue.fingerprint %></td>
+        <td><%= Repo.find(issue.repo_id).name %></td>
         <td><%= link_to 'Show', issue %></td>
         <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
         <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  repository_id: 1
-  name: MyString
-  severity: MyString
+  severity: 1
+  source: MyString
   description: MyString
-  reference_url: MyString
-  dependency: MyString
+  detail: MyText
+  fingerprint: MyString
+  scan_id: 
 
 two:
-  repository_id: 1
-  name: MyString
-  severity: MyString
+  severity: 1
+  source: MyString
   description: MyString
-  reference_url: MyString
-  dependency: MyString
+  detail: MyText
+  fingerprint: MyString
+  scan_id: 

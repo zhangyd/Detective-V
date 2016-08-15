@@ -12,28 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :repository_id %><br>
-    <%= f.number_field :repository_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
     <%= f.label :severity %><br>
-    <%= f.text_field :severity %>
+    <%= f.number_field :severity %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br>
+    <%= f.text_field :source %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :reference_url %><br>
-    <%= f.text_field :reference_url %>
+    <%= f.label :detail %><br>
+    <%= f.text_area :detail %>
   </div>
   <div class="field">
-    <%= f.label :dependency %><br>
-    <%= f.text_field :dependency %>
+    <%= f.label :fingerprint %><br>
+    <%= f.text_field :fingerprint %>
+  </div>
+  <div class="field">
+    <%= f.label :scan_id %><br>
+    <%= f.text_field :scan_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
