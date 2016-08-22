@@ -1,11 +1,14 @@
-== README
+Detective V
+===========
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Version Info
+------------
 
-Things you may want to cover:
+Ruby version:
 
-* Ruby version
+Configuration and Setup
+-----------------------
+
 
 * System dependencies
 
