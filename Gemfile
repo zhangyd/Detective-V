@@ -50,6 +50,13 @@ group :development do
   gem 'capistrano-rvm'
 end
 
+group :test do
+  gem 'rails-controller-testing'
+  gem 'minitest-reporters',       '1.1.9'
+  gem 'guard',                    '2.13.0'
+  gem 'guard-minitest',           '2.4.4'
+end
+
 group :production do
   gem 'pg', '0.18.4'
   gem 'rails_12factor'

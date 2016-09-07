@@ -19,16 +19,26 @@ Retire.js
 
 	$ npm install -g retire
 
-FindSecurityBugs and PMD need to be installed separately and the locations on your system must be specified in the config/settings.yml file
+FindSecurityBugs and PMD need to be installed separately and the locations on your system must be specified beginning from the project root directory in config/settings.yml
 
 Checkout a branch or fork this repo, then run:
 
-	$ bundle install
+	$ bundle install --without production
+
+Next, migrate the database:
+
 	$ rake db:migrate RAILS_ENV=development
 
-* System dependencies
+If the test suite passes, you'll be ready to run the app in a local server:
 
-* How to run the test suite
+	$ rails server
+
+Running the Test Suite
+----------------------
+
+Run the test suite to verify that everything is working correctly:
+
+	$ rake test
 
 * Services (job queues, cache servers, search engines, etc.)
 
