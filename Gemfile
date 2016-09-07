@@ -32,6 +32,7 @@ gem 'bootstrap-sass',          '3.3.6'
 gem 'puma',                    '3.4.0'
 gem 'coffee-rails',            '4.2.1'
 gem 'config'
+gem 'figaro'
 
 group :development, :test do
 	gem 'sqlite3'
@@ -42,6 +43,11 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
 end
 
 group :production do
