@@ -10,15 +10,18 @@ class ReposController < ApplicationController
   # GET /repos/1
   # GET /repos/1.json
   def show
+    @repos = Repo.all
   end
 
   # GET /repos/new
   def new
+    @repos = Repo.all
     @repo = Repo.new
   end
 
   # GET /repos/1/edit
   def edit
+    @repos = Repo.all
   end
 
   # POST /repos
@@ -46,6 +49,7 @@ class ReposController < ApplicationController
   # PATCH/PUT /repos/1
   # PATCH/PUT /repos/1.json
   def update
+    @repos = Repo.all
     respond_to do |format|
       if @repo.update(repo_params)
         format.html { redirect_to @repo, notice: 'Repo was successfully updated.' }

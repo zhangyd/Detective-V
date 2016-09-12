@@ -5,20 +5,24 @@ class ScansController < ApplicationController
   # GET /scans.json
   def index
     @scans = Scan.all
+    @repos = Repo.all
   end
 
   # GET /scans/1
   # GET /scans/1.json
   def show
+    @repos = Repo.all
   end
 
   # GET /scans/new
   def new
     @scan = Scan.new
+    @repos = Repo.all
   end
 
   # GET /scans/1/edit
   def edit
+    @repos = Repo.all
   end
 
   # POST /scans
@@ -89,6 +93,7 @@ class ScansController < ApplicationController
   # PATCH/PUT /scans/1
   # PATCH/PUT /scans/1.json
   def update
+    @repos = Repo.all
     respond_to do |format|
       if @scan.update(scan_params)
         format.html { redirect_to @scan, notice: 'Scan was successfully updated.' }
@@ -108,6 +113,10 @@ class ScansController < ApplicationController
       format.html { redirect_to scans_url, notice: 'Scan was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def show_issues
+
   end
 
   private

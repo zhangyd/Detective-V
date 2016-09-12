@@ -5,20 +5,24 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     @issues = Issue.all
+    @repos = Repo.all
   end
 
   # GET /issues/1
   # GET /issues/1.json
   def show
+    @repos = Repo.all
   end
 
   # GET /issues/new
   def new
     @issue = Issue.new
+    @repos = Repo.all
   end
 
   # GET /issues/1/edit
   def edit
+    @repos = Repo.all
   end
 
   # POST /issues
@@ -40,6 +44,7 @@ class IssuesController < ApplicationController
   # PATCH/PUT /issues/1
   # PATCH/PUT /issues/1.json
   def update
+    @repos = Repo.all
     respond_to do |format|
       if @issue.update(issue_params)
         format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
