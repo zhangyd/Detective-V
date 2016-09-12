@@ -33,7 +33,7 @@ class ScansController < ApplicationController
     lang = repo.language
     status = "No known vulnerabilities"
 
-    @scan = Scan.new(
+    @scan = Scan.create(
       repo_id: repo.id,
       status: status
     )
@@ -63,7 +63,7 @@ class ScansController < ApplicationController
       findings = tracker.findings
 
       findings.each do |finding|
-        @scan.status = "Vulnerabilities found"
+        @scan.update_attribute(:status, "Vulnerabilities found")
         Issue.create(
           severity: finding.severity,
           source: finding.source,

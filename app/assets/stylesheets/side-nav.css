@@ -157,6 +157,7 @@
 /* Main body section */
 .side-body {
   margin-left: 260px;
+  margin-top: 80px;
 }
 /* small screen */
 @media (max-width: 768px) {
