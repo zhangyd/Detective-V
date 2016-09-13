@@ -112,6 +112,17 @@
   right: 0;
   padding: 15px 18px;
 }
+
+.side-menu #repo-add-trigger {
+  background-color: #f3f3f3;
+  border: 0;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px 18px;
+}
+
 .side-menu .brand-name-wrapper {
   min-height: 50px;
 }
@@ -158,9 +169,10 @@
 .side-body {
   margin-left: 260px;
   margin-top: 80px;
+  padding-right: 40px;
 }
 /* small screen */
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   .side-menu {
     position: relative;
     width: 100%;
@@ -171,7 +183,7 @@
   .side-menu .brand-name-wrapper .navbar-brand {
     display: inline-block;
   }
-  /* Slide in animation */
+
   @-moz-keyframes slidein {
     0% {
       left: -300px;
@@ -219,19 +231,20 @@
     100% {
       left: -300px;
     }
-  }
+  }*/
+
   /* Slide side menu*/
   /* Add .absolute-wrapper.slide-in for scrollable menu -> see top comment */
-  .side-menu-container > .navbar-nav.slide-in {
+  /*.side-menu-container > .navbar-nav.slide-in {
     -moz-animation: slidein 300ms forwards;
     -o-animation: slidein 300ms forwards;
     -webkit-animation: slidein 300ms forwards;
     animation: slidein 300ms forwards;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-  }
-  .side-menu-container > .navbar-nav {
-    /* Add position:absolute for scrollable menu -> see top comment */
+  }*/
+  /*.side-menu-container > .navbar-nav {
+     Add position:absolute for scrollable menu -> see top comment
     position: fixed;
     left: -300px;
     width: 300px;
@@ -245,7 +258,7 @@
     animation: slideout 300ms forwards;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-  }
+  }*/
   /* Uncomment for scrollable menu -> see top comment */
   /*.absolute-wrapper{
         width:285px;
@@ -256,7 +269,7 @@
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
     }*/
-  @-moz-keyframes bodyslidein {
+  /*@-moz-keyframes bodyslidein {
     0% {
       left: 0;
     }
@@ -303,9 +316,9 @@
     100% {
       left: 0;
     }
-  }
+  }*/
   /* Slide side body*/
-  .side-body {
+  /*.side-body {
     margin-left: 5px;
     margin-top: 70px;
     position: relative;
@@ -323,34 +336,34 @@
     animation: bodyslidein 300ms forwards;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-  }
+  }*/
   /* Hamburger */
-  .navbar-toggle {
+  /*.navbar-toggle {
     border: 0;
     float: left;
     padding: 18px;
     margin: 0;
     border-radius: 0;
     background-color: #f3f3f3;
-  }
+  }*/
   /* Search */
-  #search .panel-body .navbar-form {
+  /*#search .panel-body .navbar-form {
     border-bottom: 0;
   }
   #search .panel-body .navbar-form .form-group {
     margin: 0;
-  }
-  .navbar-header {
-    /* this is probably redundant */
+  }*/
+  /*.navbar-header {
+     this is probably redundant
     position: fixed;
     z-index: 3;
     background-color: #f8f8f8;
-  }
+  }*/
   /* Dropdown tweek */
-  #dropdown .panel-body .navbar-nav {
+  /*#dropdown .panel-body .navbar-nav {
     margin: 0;
   }
-}
+}*/
 
 /****************************************/
 
@@ -358,5 +371,6 @@ html,body
 {
   overflow-x: hidden;
 }
+
 
 

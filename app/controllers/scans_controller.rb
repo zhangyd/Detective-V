@@ -12,6 +12,7 @@ class ScansController < ApplicationController
   # GET /scans/1.json
   def show
     @repos = Repo.all
+    @issues = @scan.issues
   end
 
   # GET /scans/new
