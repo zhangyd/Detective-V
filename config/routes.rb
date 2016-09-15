@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'repos#index'
 
+  get 'issues/publish/:id' => 'issues#publish', as: :publish_issues
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
