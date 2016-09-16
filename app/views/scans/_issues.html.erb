@@ -1,0 +1,46 @@
+<div class="modal fade" id="issues_modal_<%= index %>" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Issue Details</h4>
+      </div>
+      <div class="modal-body">
+        <p class="row">
+          <strong class="col-md-2">Severity</strong>
+          <span class="col-md-10"><%= issue.severity %></span>
+        </p>
+
+        <p class="row">
+          <strong class="col-md-2">Source</strong>
+          <span class="col-md-10"><%= issue.source %></span>
+        </p>
+
+        <p class="row">
+          <strong class="col-md-2">Description</strong>
+          <span class="col-md-10"><%= issue.description %></span>
+        </p>
+
+        <p class="row">
+          <strong class="col-md-2">Detail</strong>
+          <span class="col-md-10"><%= issue.detail %></span>
+        </p class="row">
+
+        <p class="row">
+          <strong class="col-md-2">Fingerprint</strong>
+          <span class="col-md-10"><%= issue.fingerprint %></span>
+        </p>
+
+        <p class="row">
+          <strong class="col-md-2">Scan</strong>
+          <span class="col-md-10"><%= issue.scan %></span>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Publish</button>
+      </div>
+    </div>
+  </div>
+</div>

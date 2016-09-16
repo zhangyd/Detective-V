@@ -1,39 +1,3 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Repos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Owner</th>
-      <th>Full name</th>
-      <th>Html url</th>
-      <th>Description</th>
-      <th>Language</th>
-      <th>Size</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @repos.each do |repo| %>
-      <tr>
-        <td><%= repo.name %></td>
-        <td><%= repo.owner %></td>
-        <td><%= repo.full_name %></td>
-        <td><%= repo.html_url %></td>
-        <td><%= repo.description %></td>
-        <td><%= repo.language %></td>
-        <td><%= repo.size %></td>
-        <td><%= link_to 'Show', repo %></td>
-        <td><%= link_to 'Edit', edit_repo_path(repo) %></td>
-        <td><%= link_to 'Destroy', repo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Repo', new_repo_path %>

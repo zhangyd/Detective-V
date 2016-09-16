@@ -32,6 +32,7 @@ gem 'bootstrap-sass',          '3.3.6'
 gem 'puma',                    '3.4.0'
 gem 'coffee-rails',            '4.2.1'
 gem 'config'
+gem 'autoprefixer-rails'
 gem 'figaro'
 
 group :development, :test do
