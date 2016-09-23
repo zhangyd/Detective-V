@@ -34,6 +34,7 @@ gem 'coffee-rails',            '4.2.1'
 gem 'config'
 gem 'autoprefixer-rails'
 gem 'figaro'
+gem 'jquery-ui-sass-rails'
 
 group :development, :test do
 	gem 'sqlite3'
