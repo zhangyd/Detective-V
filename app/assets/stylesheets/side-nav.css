@@ -43,7 +43,7 @@
   width: 100%;
   border-bottom: 1px solid #e7e7e7;
 }
-.side-menu .navbar-nav .active a {
+.side-menu .navbar-nav .active div {
   background-color: transparent;
   margin-right: -1px;
   border-right: 5px solid #e7e7e7;
@@ -53,10 +53,10 @@
   width: 100%;
   border-bottom: 1px solid #e7e7e7;
 }
-.side-menu .navbar-nav li a {
+.side-menu .navbar-nav li div {
   padding: 15px;
 }
-.side-menu .navbar-nav li a .glyphicon {
+.side-menu .navbar-nav li div .glyphicon {
   padding-right: 10px;
 }
 .side-menu #dropdown {
@@ -68,12 +68,12 @@
 }
 .side-menu #dropdown .caret {
   float: right;
-  margin: 9px 5px 0;
+  /*margin: 9px 5px 0;*/
 }
 .side-menu #dropdown .indicator {
   float: right;
 }
-.side-menu #dropdown > a {
+.side-menu #dropdown > div {
   border-bottom: 1px solid #e7e7e7;
 }
 .side-menu #dropdown .panel-body {
@@ -367,10 +367,27 @@
 
 /****************************************/
 
-html,body
-{
+html,body {
   overflow-x: hidden;
 }
 
+.side-nav-arrow {
+  float: right;
+  padding: 20px;
+  margin-top: -10px;
+  cursor: context-menu;
+}
 
+.nav-repo-name {
+  display: inline;
+}
 
+.panel-collapse {
+  padding: 0px !important;
+}
+
+.nav-repo:hover {
+  color: inherit;
+  text-decoration: none;
+  background-color: inherit;
+}

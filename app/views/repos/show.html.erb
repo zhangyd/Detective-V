@@ -1,39 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @repo.name %>
-</p>
+<h2>Project Detail: <%= @repo.name %></h2>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @repo.owner %>
-</p>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @repo.full_name %>
-</p>
+<table class="table table-striped">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td><%= @repo.name %></td>
+      </tr>
+      <tr>
+        <th>Ower</th>
+        <td><%= @repo.owner %></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><%= @repo.html_url %></td>
+      </tr>
+      <tr>
+        <th>Language</th>
+        <td><%= @repo.language %></td>
+      </tr>
+      <tr>
+        <th>Size</th>
+        <td><%= @repo.size %></td>
+      </tr>
+      <tr>
+        <th>Number of Scans</th>
+        <td><%= @repo.scans.count %></td>
+      </tr>
+      <tr>
+        <th>Most Recent Scanned On</th>
+        <td><%= @repo.scans.last.created_at %></td>
+      </tr>
+      <tr>
+        <th>Number of Vulnerabilities</th>
+        <td><%= @repo.scans.last.issues.count %></td>
+      </tr>
+      <tr>
+        <th>Most Severe Issues</th>
+        <td>................................</td>
+      </tr>
 
-<p>
-  <strong>Html url:</strong>
-  <%= @repo.html_url %>
-</p>
+    </tbody>
+</table>
 
-<p>
-  <strong>Description:</strong>
-  <%= @repo.description %>
-</p>
-
-<p>
-  <strong>Language:</strong>
-  <%= @repo.language %>
-</p>
-
-<p>
-  <strong>Size:</strong>
-  <%= @repo.size %>
-</p>
-
-<%= link_to 'Edit', edit_repo_path(@repo) %> |
-<%= link_to 'Back', repos_path %>
