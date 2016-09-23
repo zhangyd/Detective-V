@@ -7,6 +7,7 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     @issues = Issue.all
+    # remove these?
     @repos = Repo.all
   end
 

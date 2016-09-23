@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'repos#index'
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+  devise_scope :user do
+    get "/auth/:provider/callback" => "callbacks#github"
+  end
+
+  get 'users/auth/github' => "callbacks#github", as: :github
   resources :issues
   resources :scans
   resources :repos
@@ -6,10 +14,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'repos#index'
+
+  # root 'repos#index'
 
   get 'issues/publish/:id' => 'issues#publish', as: :publish_issues
 
+  # get "/auth/:provider/callback" => "callbacks#github"
+  # get "/signout" => "sessions#destroy", as: :signout
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
