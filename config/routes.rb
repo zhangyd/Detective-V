@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get "/auth/:provider/callback" => "callbacks#github"
   end
 
+  authenticated :user do
+    root 'repos#index', as: :authenticated_root
+  end
+
   get 'users/auth/github' => "callbacks#github", as: :github
   resources :issues
   resources :scans

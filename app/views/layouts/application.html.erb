@@ -25,7 +25,15 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-right">
-			<li id="oauth"><%= link_to "Sign in with Github", github_path %></li>
+	      	<% if user_signed_in? %>
+	      		<li>
+	      			Welcome, <%= current_user.name %>
+	      		</li>
+	      		<li id="signout"><%= link_to "Signout", destroy_user_session_path, method: :delete %>
+	      		</li>
+	      	<% else %>
+				<li id="oauth"><%= link_to "Sign in with Github", user_github_omniauth_authorize_path %></li>
+			<% end %>
 	      </ul>
 
 	      <form class="navbar-form navbar-right">

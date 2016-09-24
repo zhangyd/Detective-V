@@ -40,6 +40,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 
+gem 'protected_attributes'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
