@@ -41,6 +41,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 gem 'protected_attributes'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3'

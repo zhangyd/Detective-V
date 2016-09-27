@@ -22,9 +22,7 @@ Rails.application.routes.draw do
   # root 'repos#index'
 
   get 'issues/publish/:id' => 'issues#publish', as: :publish_issues
-
-  # get "/auth/:provider/callback" => "callbacks#github"
-  # get "/signout" => "sessions#destroy", as: :signout
+  get 'users/settings/' => 'users#settings', as: :user_settings
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
