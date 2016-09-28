@@ -1,5 +1,5 @@
 github:
-  api_access_token: b553983098b0bbe6a51f56d850f4d8f57fa5b667
+  api_access_token:
 pipeline:
   npm_registry: https://registry.npmjs.org/
   tasks_for:
