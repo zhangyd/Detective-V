@@ -7,33 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<!-- GitHub Login Modal -->
-	<div class="modal fade" id="login" tabindex="-1" role="dialog">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="exampleModalLabel">Login with GitHub</h4>
-	      </div>
-	      <div class="modal-body">
-	        <form>
-	          <div class="form-group">
-	            <label for="recipient-name" class="control-label">Username:</label>
-	            <input type="text" class="form-control" id="recipient-name">
-	          </div>
-	          <div class="form-group">
-	            <label for="recipient-name" class="control-label">Password:</label>
-	            <input type="text" class="form-control" id="recipient-name">
-	          </div>
-	        </form>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Login</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 
 	<!-- Top Nav Bar -->
 	<nav class="navbar navbar-default navbar-fixed-top top-nav">
@@ -52,7 +25,14 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a data-toggle="modal" data-target="#login">GitHub Login</a></li>
+	      	<% if user_signed_in? %>
+	      		<li><%= link_to "Signed in as #{current_user.name}", user_settings_path %></li>
+	      		</li>
+	      		<li id="signout"><%= link_to "Signout", destroy_user_session_path, method: :delete %>
+	      		</li>
+	      	<% else %>
+				<li id="oauth"><%= link_to "Sign in with Github", user_github_omniauth_authorize_path %></li>
+			<% end %>
 	      </ul>
 
 	      <form class="navbar-form navbar-right">

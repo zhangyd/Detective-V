@@ -1,0 +1,14 @@
+Detective-V identified the following vulnerability in <%= @publish_repo.name %>:
+
+**Description:** <%= @issue.description %>
+**Severity:** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @issue.severity %>
+**Details:** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= raw(@issue.detail) %>
+**Scanner:** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @issue.scanner %>
+**File:** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<%= @issue.file %>]<% unless @issue.line.nil? %>, **Line:** <%= @issue.line %><% end %>
+<% unless @issue.code.nil? %>
+**Code:**
+
+```
+<%= raw(@issue.code) %>
+```
+<% end %>
