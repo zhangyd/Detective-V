@@ -27,15 +27,27 @@
       </tr>
       <tr>
         <th>Number of Scans</th>
-        <td><%= @repo.scans.count %></td>
+        <% if @repo.scans %>
+          <td><%= @repo.scans.count %></td>
+        <% else %>
+          <td>0</td>
+        <% end %>
       </tr>
       <tr>
         <th>Most Recent Scanned On</th>
-        <td><%= @repo.scans.last.created_at %></td>
+        <% if @repo.scans.last %>
+          <td><%= @repo.scans.last.created_at %></td>
+        <% else %>
+          <td>N/A</td>
+        <% end %>
       </tr>
       <tr>
         <th>Number of Vulnerabilities</th>
-        <td><%= @repo.scans.last.issues.count %></td>
+        <% if @repo.scans.last %>
+          <td><%= @repo.scans.last.issues.count %></td>
+        <% else %>
+          <td>N/A</td>
+        <% end %>
       </tr>
       <tr>
         <th>Most Severe Issues</th>
