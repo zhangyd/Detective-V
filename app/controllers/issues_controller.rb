@@ -1,3 +1,5 @@
+require 'octokit'
+
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
@@ -5,6 +7,7 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     @issues = Issue.all
+    # remove these?
     @repos = Repo.all
   end
 
@@ -64,6 +67,18 @@ class IssuesController < ApplicationController
       format.html { redirect_to issues_url, notice: 'Issue was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def publish
+    # @user = ApplicationController.current_user
+    @issue = Issue.find(params[:id])
+    @repos = Repo.all
+    @publish_repo  = Repo.find(@issue.repo_id)
+    # ApplicationHelper.github.create_issue()
+    token = "2626e7c10238415ea0c5a372c343f5f015d61e9d"
+    user_github = Octokit::Client.new(:access_token => token)
+    # user_github = ApplicationHelper.github
+    @result = user_github.create_issue("#{@publish_repo.owner}/#{@publish_repo.name}", @issue.description, render_to_string("github_issue"))
   end
 
   private

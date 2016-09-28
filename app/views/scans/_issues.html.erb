@@ -39,8 +39,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Publish</button>
-      </div>
+        <%= link_to publish_issues_path(:id => issue.id) do %>
+          <button class="btn btn-primary">Publish</button>
+        <% end %>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 github:
-  api_access_token: 4e559f8edc30e6c87eefb9e8e702ebaa7bb94411
+  api_access_token: f5a02e767a202437ac4bc6fa47629abb28660f2e
 pipeline:
   npm_registry: https://registry.npmjs.org/
   tasks_for:
@@ -7,6 +7,5 @@ pipeline:
     JavaScript: NPM,RetireJS,NodeSecurityProject,Snyk
     CoffeeScript: NPM,RetireJS,NodeSecurityProject,Snyk
     Java: PMD,FindSecurityBugs,OWASPDependencyCheck
-  pmd_path: /Users/agrobbel/workspace/security/pmd
-  findsecbugs_path: /Users/agrobbel/workspace/security/findsecbugs
-  depcheck_path: /Users/agrobbel/workspace/security/OWASPDependencyCheck
+  pmd_path: /Users/jintinghayter/Code/tools/pmd
+  findsecbugs_path: /Users/jintinghayter/Code/tools/findbugs
