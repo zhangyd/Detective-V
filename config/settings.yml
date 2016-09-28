@@ -7,6 +7,5 @@ pipeline:
     JavaScript: NPM,RetireJS,NodeSecurityProject,Snyk
     CoffeeScript: NPM,RetireJS,NodeSecurityProject,Snyk
     Java: PMD,FindSecurityBugs,OWASPDependencyCheck
-  pmd_path: /Users/agrobbel/workspace/security/pmd
-  findsecbugs_path: /Users/agrobbel/workspace/security/findsecbugs
-  depcheck_path: /Users/agrobbel/workspace/security/OWASPDependencyCheck
+  pmd_path: /Users/jintinghayter/Code/tools/pmd
+  findsecbugs_path: /Users/jintinghayter/Code/tools/findbugs

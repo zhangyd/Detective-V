@@ -35,12 +35,24 @@ gem 'config'
 gem 'autoprefixer-rails'
 gem 'figaro'
 
+gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github'
+
+gem 'protected_attributes'
+gem 'simple_form'
+
 group :development, :test do
 	gem 'sqlite3'
 	gem 'byebug'
 	gem 'pry'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'sqlite3'
+  gem 'byebug'
+  gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :development do
