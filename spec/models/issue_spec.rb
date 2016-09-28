@@ -1,7 +1,7 @@
 # spec/models/issue_spec.rb
 require 'spec_helper'
 
-describe Issue do
+describe Issue, type: :model do
   it "has a valid factory" do
   	FactoryGirl.create(:issue).should be_valid
   end

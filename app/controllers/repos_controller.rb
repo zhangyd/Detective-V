@@ -4,30 +4,27 @@ class ReposController < ApplicationController
   # GET /repos
   # GET /repos.json
   def index
-    @repos = Repo.all
   end
 
   # GET /repos/1
   # GET /repos/1.json
   def show
-    @repos = Repo.all
   end
 
   # GET /repos/new
   def new
-    @repos = Repo.all
     @repo = Repo.new
   end
 
   # GET /repos/1/edit
   def edit
-    @repos = Repo.all
   end
 
   # POST /repos
   # POST /repos.json
   def create
     params = Repo.get_repo(repo_params[:name], repo_params[:owner])
+    params[:user_id] = current_user.id
     if params == nil
       puts "@@@ Found bad url"
       @user.errors[:base] << "fail"
@@ -80,6 +77,6 @@ class ReposController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def repo_params
-      params.require(:repo).permit(:name, :owner, :html_url, :description, :language, :size)
+      params.require(:repo).permit(:name, :owner, :html_url, :description, :language, :size, :user_id)
     end
 end

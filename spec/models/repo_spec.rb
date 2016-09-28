@@ -1,7 +1,7 @@
 # spec/models/repo_spec.rb
 require 'rails_helper'
 
-describe Repo do
+describe Repo, type: :model do
   it "has a valid factory" do
   	FactoryGirl.create(:repo).should be_valid
   end
