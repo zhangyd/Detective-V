@@ -21,8 +21,7 @@ class Repo < ActiveRecord::Base
 			git_repo = github.repo(full_name)
 			params = {
 				name: name, 
-				owner: owner, 
-				full_name: git_repo[:full_name],
+				owner: owner,
 				html_url: git_repo[:html_url],
 				description: git_repo[:description],
 				language: git_repo[:language],
@@ -31,5 +30,4 @@ class Repo < ActiveRecord::Base
 			return params
 		end
 	end
-
 end

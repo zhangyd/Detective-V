@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815181335) do
+ActiveRecord::Schema.define(version: 20160927175817) do
 
   create_table "issues", force: :cascade do |t|
     t.integer  "severity"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160815181335) do
   create_table "repos", force: :cascade do |t|
     t.string   "name"
     t.string   "owner"
-    t.string   "full_name"
     t.string   "html_url"
     t.string   "description"
     t.string   "language"

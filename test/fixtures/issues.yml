@@ -2,16 +2,26 @@
 
 one:
   severity: 1
-  source: MyString
-  description: MyString
-  detail: MyText
-  fingerprint: MyString
-  scan_id: 
+  source: source
+  description: description
+  detail: details
+  fingerprint: fingerprint
+  scan_id: 1
+  file: file
+  line: line
+  code: code
+  scanner: scanner
+
 
 two:
   severity: 1
-  source: MyString
-  description: MyString
-  detail: MyText
-  fingerprint: MyString
-  scan_id: 
+  source: source
+  description: description
+  detail: details
+  fingerprint: fingerprint
+  scan_id: 1
+  file: file
+  line: line
+  code: code
+  scanner: scanner
+  repo_id: 1
