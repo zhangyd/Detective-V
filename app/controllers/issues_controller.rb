@@ -70,14 +70,11 @@ class IssuesController < ApplicationController
   end
 
   def publish
-    # @user = ApplicationController.current_user
     @issue = Issue.find(params[:id])
-    @repos = Repo.all
+    # @repos = Repo.all
     @publish_repo  = Repo.find(@issue.repo_id)
-    # ApplicationHelper.github.create_issue()
-    token = "2626e7c10238415ea0c5a372c343f5f015d61e9d"
-    user_github = Octokit::Client.new(:access_token => token)
-    # user_github = ApplicationHelper.github
+    # check if access token
+    user_github = Octokit::Client.new(:access_token => current_user.access_token)
     @result = user_github.create_issue("#{@publish_repo.owner}/#{@publish_repo.name}", @issue.description, render_to_string("github_issue"))
   end
 
