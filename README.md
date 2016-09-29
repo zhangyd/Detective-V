@@ -38,7 +38,11 @@ Running the Test Suite
 
 Run the test suite to verify that everything is working correctly:
 
-	$ rake test
+	$ rspec spec
+
+To run a specific test, use the command rspec and then the path to that specific test file, or alternatively for all models, something like:
+
+	$ rake spec:models
 
 * Services (job queues, cache servers, search engines, etc.)
 

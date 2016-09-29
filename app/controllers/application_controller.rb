@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
 	#   session[:previous_url] || root_path
 	# end
 	
-  def get_repos
-		@repos = Repo.all
+	def get_repos
+		@repos = current_user.repos
 	end
 
   # def after_sign_in_path_for(resource)
