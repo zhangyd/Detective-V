@@ -1,16 +1,14 @@
 <p id="notice"><%= notice %></p>
+<h1>User Settings</h1></br>
 
-<!-- <form>
-  <div class="form-group">
-    <label for="accessTokenInput">Input Access Token</label>
-    <input type="text" class="form-control" id="accessTokenInput" aria-describedby="accessTokenHelp" placeholder="40 character token here">
-    <small id="accessTokenHelp" class="form-text text-muted">You only need to do this once!</small>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form> -->
+<p> Go <a href="https://github.com/settings/tokens">here</a> to create a token! </p>
 
-<% simple_form_for(@user, url: user_settings_path(@user), html: { class: 'form-horizontal' }) do |f| %>
-  <%= f.input :access_token, placeholder: '40 character token here' %>
-  <%= f.button :submit %>
+<%= form_for @user, url: user_settings_path, html: {class: "token_form"}, method: :post do |f| %>
+
+    <div class="field">
+      <%= f.label :access_token %><br />
+      <%= f.text_field :access_token, placeholder: '40 character token'%>
+    </div> 
+
+  <%= f.submit "Add Token" %>
 <% end %>
-	
