@@ -23,7 +23,6 @@
         <td><%= issue.description %></td>
         <td><%= issue.detail %></td>
         <td><%= issue.fingerprint %></td>
-        <td><%= Repo.find(issue.repo_id).name %></td>
         <td><%= link_to 'Show', issue %></td>
         <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
         <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>

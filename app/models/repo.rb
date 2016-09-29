@@ -1,8 +1,10 @@
 require "net/http"
 
 class Repo < ActiveRecord::Base
+	belongs_to :user
 	validates :name, presence: true
 	validates :owner, presence: true
+	validates :user_id, presence: true
 	has_many :scans, dependent: :destroy
 	has_many :issues, dependent: :destroy
 
@@ -16,20 +18,18 @@ class Repo < ActiveRecord::Base
 		res = req.request_head(url.path)
 
 		if res.code == "200"
-
 			github = ApplicationHelper.github
 			git_repo = github.repo(full_name)
 			params = {
 				name: name, 
-				owner: owner, 
-				full_name: git_repo[:full_name],
+				owner: owner,
 				html_url: git_repo[:html_url],
 				description: git_repo[:description],
 				language: git_repo[:language],
-				size: git_repo[:size]
+				size: git_repo[:size],
+				user_id: -1
 			}
 			return params
 		end
 	end
-
 end
