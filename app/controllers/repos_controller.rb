@@ -9,6 +9,15 @@ class ReposController < ApplicationController
   # GET /repos/1
   # GET /repos/1.json
   def show
+    @repos = Repo.all
+    final_params = []
+    unless @repo.scans.last == nil
+      last_scan_id = @repo.scans.last.id
+      final_query_array = ["SELECT * FROM issues WHERE scan_id = ?", "ORDER BY issues.severity DESC"]
+      final_params.push(last_scan_id)
+      final_query = final_query_array.join(" ")
+      @issues = Issue.find_by_sql [final_query, *final_params]
+    end
   end
 
   # GET /repos/new

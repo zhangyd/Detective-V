@@ -51,7 +51,11 @@
       </tr>
       <tr>
         <th>Most Severe Issues</th>
-        <td>................................</td>
+        <% if @issues %>
+          <td><%= select_tag 'issues', options_for_select(@issues.collect{ |issue| [issue.description] })%></td>
+        <% else %>
+          <td><%= select_tag 'issues', options_for_select(['N/A']) %></td>
+        <% end %>
       </tr>
 
     </tbody>
