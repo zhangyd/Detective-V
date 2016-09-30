@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'repos#index'
+  root 'home#index'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   devise_scope :user do

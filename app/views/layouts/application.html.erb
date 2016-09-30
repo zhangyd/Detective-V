@@ -39,71 +39,65 @@
 	</nav>
 
 
-	<% if current_user %>
-		<!-- Side Nav Bar -->
-		<div class="row">
-	    <div class="side-menu side-nav">
-		    <nav class="navbar navbar-default" role="navigation">
-			    <!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header">
-		        <div class="brand-wrapper">
-	            <!-- Hamburger -->
-	            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-	            </button>
 
-	            <!-- Brand -->
-	            <div class="brand-name-wrapper">
-                <a class="navbar-brand" href="#">
-                  Projects
-                </a>
-	            </div>
+	<!-- Side Nav Bar -->
+	<div class="row side-bar">
+    <div class="side-menu side-nav">
+	    <nav class="navbar navbar-default" role="navigation">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+	        <div class="brand-wrapper">
+            <!-- Brand -->
+            <div class="brand-name-wrapper">
+              <a class="navbar-brand" href="#">
+              	<% if !current_user %>Sample<% end %> Projects
+              </a>
+            </div>
 
-							<!-- New Project -->
-	            <%= link_to '<i class="glyphicon glyphicon-plus"></i>'.html_safe, new_repo_path, id: 'repo-add-trigger' %>
-		        </div>
-			    </div>
+						<!-- New Project -->
+						<% if current_user %>
+            	<%= link_to '<i class="glyphicon glyphicon-plus"></i>'.html_safe, new_repo_path, id: 'repo-add-trigger' %>
+            <% end %>
+	        </div>
+		    </div>
 
-			    <!-- Repo List -->
-			    <div class="side-menu-container">
-			      <ul class="nav navbar-nav side-nav-list">
-							<% @repos.each do |repo| %>
-								<li class="panel panel-default" id="dropdown">
+		    <!-- Repo List -->
+		    <div class="side-menu-container">
+		      <ul class="nav navbar-nav side-nav-list">
+						<% @repos.each do |repo| %>
+							<li class="panel panel-default" id="dropdown">
+								<!-- <span class="glyphicon glyphicon-sunglasses"></span><%= repo.name %> -->
+								<div>
 									<!-- <span class="glyphicon glyphicon-sunglasses"></span><%= repo.name %> -->
-									<div>
-										<!-- <span class="glyphicon glyphicon-sunglasses"></span><%= repo.name %> -->
-										<span class="glyphicon glyphicon-sunglasses"></span><%= link_to repo.name, repo, {:class => "nav-repo"} %>
-										<span class="side-nav-arrow" data-toggle="collapse" href="#dropdown-<%=repo.id%>">
-											<span class="caret"></span>
-										</span>
-									</div>
-									<!-- Dropdown level 1 -->
-		                <div id="dropdown-<%=repo.id%>" class="panel-collapse collapse">
-	                    <div class="panel-body">
-	                        <ul class="nav navbar-nav">
-														<% repo.scans.each do |scan| %>
-															<li><%= link_to scan.created_at, scan %></li>
-														<% end %>
-	                        </ul>
-	                    </div>
-		                </div>
-								</li>
-						    <% end %>
-			        </ul>
-			    </div><!-- /.navbar-collapse -->
+									</span><%= link_to repo.owner + "/" + repo.name, repo, {:class => "nav-repo"} %>
+									<span class="side-nav-arrow" data-toggle="collapse" href="#dropdown-<%=repo.id%>">
+										Scans<span class="caret"></span>
+									</span>
+								</div>
+								<!-- Dropdown level 1 -->
+	                <div id="dropdown-<%=repo.id%>" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+													<% repo.scans.each do |scan| %>
+														<li><%= link_to scan.created_at.strftime("%m/%d/%Y - %H:%M"), scan %></li>
+													<% end %>
+                        </ul>
+                    </div>
+	                </div>
+							</li>
+					    <% end %>
+		        </ul>
+		    </div><!-- /.navbar-collapse -->
 
-				</nav>
-	    </div>
-		</div>
-	<% end %>
+			</nav>
+    </div>
+	</div>
 
-<div class="side-body">
-	<%= render 'shared/error_messages' %>
-	<%= yield %>
-</div>
+
+	<div class="side-body">
+		<%= render 'shared/error_messages' %>
+		<%= yield %>
+	</div>
 
 </body>
 </html>

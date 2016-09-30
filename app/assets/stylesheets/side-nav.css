@@ -171,201 +171,6 @@
   margin-top: 80px;
   padding-right: 40px;
 }
-/* small screen */
-/*@media (max-width: 768px) {
-  .side-menu {
-    position: relative;
-    width: 100%;
-    height: 0;
-    border-right: 0;
-    border-bottom: 1px solid #e7e7e7;
-  }
-  .side-menu .brand-name-wrapper .navbar-brand {
-    display: inline-block;
-  }
-
-  @-moz-keyframes slidein {
-    0% {
-      left: -300px;
-    }
-    100% {
-      left: 10px;
-    }
-  }
-  @-webkit-keyframes slidein {
-    0% {
-      left: -300px;
-    }
-    100% {
-      left: 10px;
-    }
-  }
-  @keyframes slidein {
-    0% {
-      left: -300px;
-    }
-    100% {
-      left: 10px;
-    }
-  }
-  @-moz-keyframes slideout {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: -300px;
-    }
-  }
-  @-webkit-keyframes slideout {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: -300px;
-    }
-  }
-  @keyframes slideout {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: -300px;
-    }
-  }*/
-
-  /* Slide side menu*/
-  /* Add .absolute-wrapper.slide-in for scrollable menu -> see top comment */
-  /*.side-menu-container > .navbar-nav.slide-in {
-    -moz-animation: slidein 300ms forwards;
-    -o-animation: slidein 300ms forwards;
-    -webkit-animation: slidein 300ms forwards;
-    animation: slidein 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }*/
-  /*.side-menu-container > .navbar-nav {
-     Add position:absolute for scrollable menu -> see top comment
-    position: fixed;
-    left: -300px;
-    width: 300px;
-    top: 43px;
-    height: 100%;
-    border-right: 1px solid #e7e7e7;
-    background-color: #f8f8f8;
-    -moz-animation: slideout 300ms forwards;
-    -o-animation: slideout 300ms forwards;
-    -webkit-animation: slideout 300ms forwards;
-    animation: slideout 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }*/
-  /* Uncomment for scrollable menu -> see top comment */
-  /*.absolute-wrapper{
-        width:285px;
-        -moz-animation: slideout 300ms forwards;
-        -o-animation: slideout 300ms forwards;
-        -webkit-animation: slideout 300ms forwards;
-        animation: slideout 300ms forwards;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-    }*/
-  /*@-moz-keyframes bodyslidein {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: 300px;
-    }
-  }
-  @-webkit-keyframes bodyslidein {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: 300px;
-    }
-  }
-  @keyframes bodyslidein {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: 300px;
-    }
-  }
-  @-moz-keyframes bodyslideout {
-    0% {
-      left: 300px;
-    }
-    100% {
-      left: 0;
-    }
-  }
-  @-webkit-keyframes bodyslideout {
-    0% {
-      left: 300px;
-    }
-    100% {
-      left: 0;
-    }
-  }
-  @keyframes bodyslideout {
-    0% {
-      left: 300px;
-    }
-    100% {
-      left: 0;
-    }
-  }*/
-  /* Slide side body*/
-  /*.side-body {
-    margin-left: 5px;
-    margin-top: 70px;
-    position: relative;
-    -moz-animation: bodyslideout 300ms forwards;
-    -o-animation: bodyslideout 300ms forwards;
-    -webkit-animation: bodyslideout 300ms forwards;
-    animation: bodyslideout 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  .body-slide-in {
-    -moz-animation: bodyslidein 300ms forwards;
-    -o-animation: bodyslidein 300ms forwards;
-    -webkit-animation: bodyslidein 300ms forwards;
-    animation: bodyslidein 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }*/
-  /* Hamburger */
-  /*.navbar-toggle {
-    border: 0;
-    float: left;
-    padding: 18px;
-    margin: 0;
-    border-radius: 0;
-    background-color: #f3f3f3;
-  }*/
-  /* Search */
-  /*#search .panel-body .navbar-form {
-    border-bottom: 0;
-  }
-  #search .panel-body .navbar-form .form-group {
-    margin: 0;
-  }*/
-  /*.navbar-header {
-     this is probably redundant
-    position: fixed;
-    z-index: 3;
-    background-color: #f8f8f8;
-  }*/
-  /* Dropdown tweek */
-  /*#dropdown .panel-body .navbar-nav {
-    margin: 0;
-  }
-}*/
-
-/****************************************/
 
 html,body {
   overflow-x: hidden;
@@ -373,9 +178,14 @@ html,body {
 
 .side-nav-arrow {
   float: right;
-  padding: 20px;
-  margin-top: -10px;
+  /*padding: 20px;
+  margin-top: -10px;*/
   cursor: context-menu;
+}
+
+.side-nav-arrow .caret {
+  margin-top: 8px;
+  margin-left: 5px;
 }
 
 .nav-repo-name {
@@ -390,4 +200,8 @@ html,body {
   color: inherit;
   text-decoration: none;
   background-color: inherit;
+}
+
+.side-menu-container .navbar-nav {
+  margin: 0px !important;
 }
