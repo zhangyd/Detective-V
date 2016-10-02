@@ -1,0 +1,16 @@
+.un-logged-in {
+	text-align: center;
+}
+
+.un-logged-in p {
+	line-height: 1.7em;
+	padding: 20px;
+}
+
+.home-container {
+	margin-bottom: 20px;
+}
+
+.home-container h2 {
+	display: inline;
+}
