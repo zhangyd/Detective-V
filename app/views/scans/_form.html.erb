@@ -16,7 +16,7 @@
     <%= f.text_field :status %>
   </div> -->
   <div class="field">
-    <%= f.collection_select :repo_id, Repo.all, :id, :name %>
+    <%= f.collection_select :repo_id, current_user.repos, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

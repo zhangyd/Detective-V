@@ -9,7 +9,6 @@ class ReposController < ApplicationController
   # GET /repos/1
   # GET /repos/1.json
   def show
-    @repos = Repo.all
     final_params = []
     unless @repo.scans.last == nil
       last_scan_id = @repo.scans.last.id
@@ -56,7 +55,6 @@ class ReposController < ApplicationController
   # PATCH/PUT /repos/1
   # PATCH/PUT /repos/1.json
   def update
-    @repos = Repo.all
     respond_to do |format|
       if @repo.update(repo_params)
         format.html { redirect_to @repo, notice: 'Repo was successfully updated.' }
