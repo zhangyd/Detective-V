@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   # method to check users first
 
 	def get_repos
-		unless current_user.nil?
+		if current_user.nil?
+			@repos = Repo.where(:user_id => nil)
+		else
 			@repos = current_user.repos
 		end
 	end

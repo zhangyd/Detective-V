@@ -16,8 +16,11 @@
     <%= f.text_field :status %>
   </div> -->
   <div class="field">
-    <%= f.collection_select :repo_id, current_user.repos, :id, :name %>
+    <%= f.label :Repo %><br>
+    <%= f.collection_select :repo_id, current_user.repos, :id, :name, {class: "form-group"} %>
   </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

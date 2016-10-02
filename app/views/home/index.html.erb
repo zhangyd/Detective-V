@@ -1,0 +1,54 @@
+<% if !current_user %>
+	<div class="un-logged-in">
+
+		<%= image_tag("logo.png", :alt => "logo") %>
+
+		<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+		<h4>Ready to get started?</h4>
+
+		<%= link_to "Sign in with Github", user_github_omniauth_authorize_path, class: "btn btn-default" %>
+
+	</div>
+
+<% else %>
+
+	<div class="home-container">
+		<h2 >My Projects Summary</h2>
+		<%= link_to "New Scan", new_scan_path, class: "btn btn-default pull-right" %>
+	</div>
+
+	<table class="table table-striped">
+    <tbody>
+      <tr>
+        <th>Num Projects</th>
+        <td><%= current_user.repos.count %></td>
+      </tr>
+      <tr>
+        <th>Num Scans</th>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th>Num Issues</th>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th>Severe Issues</th>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th>Popular Repos</th>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th>...</th>
+        <td>...</td>
+      </tr>
+			<tr>
+        <th>...</th>
+        <td>...</td>
+      </tr>
+    </tbody>
+	</table>
+
+<% end %>
