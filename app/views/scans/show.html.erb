@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Repo:</strong>
-  <%= scan.repo.owner + "/" + scan.repo.name %>
+  <%= @scan.repo.owner + "/" + @scan.repo.name %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= scan.status %>
+  <%= @scan.status %>
 </p>
 
 <table class="table">
