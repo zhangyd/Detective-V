@@ -1,34 +1,35 @@
 <p id="notice"><%= notice %></p>
+<% @scans.each do |scan| %>
+	<p>
+	  <strong>Repo:</strong>
+	  <%= scan.repo.owner + "/" + scan.repo.name %>
+	</p>
 
-<p>
-  <strong>Repo:</strong>
-  <%= @scan.repo.owner + "/" + @scan.repo.name %>
-</p>
+	<p>
+	  <strong>Status:</strong>
+	  <%= scan.status %>
+	</p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @scan.status %>
-</p>
-
-<table class="table">
-	<thead>
-	  <tr>
-	    <th>Severity</th>
-	    <th>Description</th>
-	    <th>Detail</th>
-	  </tr>
-	</thead>
-	<tbody>
-		<% @issues.each_with_index do |issue, index| %>
-		  <tr class="<%= 'danger' if issue.severity == 2 %> <%= 'warning' if issue.severity == 1 %>">
-		    <td><%= issue.severity %></td>
-		    <td><%= issue.description %></td>
-
-        <%= render :partial => "issues", :locals => { :issue => issue, :index => index }  %>
-
-		    <td><span data-toggle="modal" data-target="#issues_modal_<%= index %>">View</span></td>
-
+	<table class="table">
+		<thead>
+		  <tr>
+		    <th>Severity</th>
+		    <th>Description</th>
+		    <th>Detail</th>
 		  </tr>
-		<% end %>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<% @issues.each_with_index do |issue, index| %>
+			  <tr class="<%= 'danger' if issue.severity == 2 %> <%= 'warning' if issue.severity == 1 %>">
+			    <td><%= issue.severity %></td>
+			    <td><%= issue.description %></td>
+
+	        <%= render :partial => "issues", :locals => { :issue => issue, :index => index }  %>
+
+			    <td><span data-toggle="modal" data-target="#issues_modal_<%= index %>">View</span></td>
+
+			  </tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

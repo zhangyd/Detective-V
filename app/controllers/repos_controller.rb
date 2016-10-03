@@ -1,5 +1,6 @@
 class ReposController < ApplicationController
   before_action :set_repo, only: [:show, :edit, :update, :destroy]
+  include ScansHelper
 
   # GET /repos
   # GET /repos.json
@@ -78,13 +79,32 @@ class ReposController < ApplicationController
 
   def actions
     repos = Repo.find(params[:repo_ids])
-    if params[:scan]
-    end
 
     if params[:delete]
       repos.each do |repo|
         repo.destroy
       end
+      redirect_to :back, notice: 'Repos were successfully deleted.' 
+    end
+
+    if params[:scan]
+      @scans = []
+      repos.each do |repo|
+        @scan = ScansHelper.scan(repo, current_user)
+        @scans.push(@scan)
+      end
+
+      #check to see if any errors while scanning
+      redirect_to :back, notice: 'Scans created.'
+      # respond_to do |format|
+      #   if @scan.save
+      #     format.html { redirect_to @scan, notice: 'Scans were successfully created.' }
+      #     format.json { render :show, status: :created, location: @scan }
+      #   else
+      #     format.html { render :new }
+      #     format.json { render json: @scan.errors, status: :unprocessable_entity }
+      #   end
+      # end
     end
   end
 

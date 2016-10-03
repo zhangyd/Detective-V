@@ -3,6 +3,10 @@ require 'tempfile'
 
 module ApplicationHelper
 
+	def self.github
+		return Octokit::Client.new(:access_token => Settings.github.api_access_token)
+	end
+
   def self.inside_github_archive repo
     dir = Dir.mktmpdir
     filename = Dir::Tmpname.make_tmpname(['detective_v', '.tar.gz'], nil)
