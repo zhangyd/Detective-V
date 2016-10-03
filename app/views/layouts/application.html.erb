@@ -78,7 +78,7 @@
 	                <div id="dropdown-<%=repo.id%>" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="nav navbar-nav">
-													<% repo.scans.each do |scan| %>
+													<% repo.scans.reverse.each do |scan| %>
 														<li><%= link_to scan.created_at.strftime("%m/%d/%Y - %H:%M"), scan %></li>
 													<% end %>
                         </ul>

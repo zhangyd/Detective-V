@@ -12,11 +12,6 @@
         </p>
 
         <p class="row">
-          <strong class="col-md-2">Source</strong>
-          <span class="col-md-10"><%= issue.source %></span>
-        </p>
-
-        <p class="row">
           <strong class="col-md-2">Description</strong>
           <span class="col-md-10"><%= issue.description %></span>
         </p>
@@ -27,13 +22,25 @@
         </p class="row">
 
         <p class="row">
-          <strong class="col-md-2">Fingerprint</strong>
-          <span class="col-md-10"><%= issue.fingerprint %></span>
+          <strong class="col-md-2">File</strong>
+          <span class="col-md-10"><%= issue.file %></span>
         </p>
 
         <p class="row">
-          <strong class="col-md-2">Scan</strong>
-          <span class="col-md-10"><%= issue.scan %></span>
+          <strong class="col-md-2">Line</strong>
+          <span class="col-md-10"><%= issue.line %></span>
+        </p>
+
+        <% if issue.code != ""%>
+          <p class="row">
+            <strong class="col-md-2">Code</strong>
+            <span class="col-md-10"><code><%= issue.code %></code></span>
+          </p>
+        <% end %>
+
+        <p class="row">
+          <strong class="col-md-2">Created At</strong>
+          <span class="col-md-10"><%= issue.scan.created_at.strftime("%m/%d/%Y - %H:%M") %></span>
         </p>
 
       </div>

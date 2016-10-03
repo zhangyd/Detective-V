@@ -46,6 +46,7 @@ module ScansHelper
           scan_id: @scan.id,
           repo_id: repo.id,
           scanner: finding.source[:scanner],
+          file: finding.source[:file], 
           line: finding.source[:line],
           code: finding.source[:code],
           user_id: user.id
