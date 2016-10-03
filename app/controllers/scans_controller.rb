@@ -73,7 +73,8 @@ class ScansController < ApplicationController
           repo_id: repo.id,
           scanner: finding.source[:scanner],
           line: finding.source[:line],
-          code: finding.source[:code]
+          code: finding.source[:code],
+          user_id: current_user.id
         )
       end
     end
@@ -125,6 +126,6 @@ class ScansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scan_params
-      params.require(:scan).permit(:status, :repo_id)
+      params.require(:scan).permit(:status, :user_id, :repo_id => [])
     end
 end

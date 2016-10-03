@@ -32,13 +32,13 @@ class ReposController < ApplicationController
   # POST /repos.json
   def create
     params = Repo.get_repo(repo_params[:name], repo_params[:owner])
-    params[:user_id] = current_user.id
     if params == nil
       puts "@@@ Found bad url"
       @user.errors[:base] << "fail"
       redirect_to root_path and return
     end
-
+    
+    params[:user_id] = current_user.id
     @repo = Repo.new(params)
 
     respond_to do |format|
@@ -76,6 +76,18 @@ class ReposController < ApplicationController
     end
   end
 
+  def actions
+    repos = Repo.find(params[:repo_ids])
+    if params[:scan]
+    end
+
+    if params[:delete]
+      repos.each do |repo|
+        repo.destroy
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_repo
@@ -84,6 +96,6 @@ class ReposController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def repo_params
-      params.require(:repo).permit(:name, :owner, :html_url, :description, :language, :size, :user_id)
+      params.require(:repo).permit(:name, :owner, :html_url, :description, :language, :size, :user_id, :repo_ids => [])
     end
 end

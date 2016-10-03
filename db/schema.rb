@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002035230) do
+ActiveRecord::Schema.define(version: 20161002164430) do
 
   create_table "issues", force: :cascade do |t|
     t.integer  "severity"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161002035230) do
     t.string   "file"
     t.string   "line"
     t.string   "code"
+    t.integer  "user_id"
   end
 
   add_index "issues", ["repo_id"], name: "index_issues_on_repo_id"
