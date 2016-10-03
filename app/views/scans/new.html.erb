@@ -1,3 +1,8 @@
 <h1>New Scan</h1>
+<% if current_user %>
+	<%= render 'form' %>
+<% else %>
+	<p>Please login to access scan page </p>
+<% end %>
 
-<%= render 'form' %>
+<%= link_to 'Back', scans_path %>

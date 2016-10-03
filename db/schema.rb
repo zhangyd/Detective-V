@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928211426) do
+ActiveRecord::Schema.define(version: 20161002164430) do
 
   create_table "issues", force: :cascade do |t|
     t.integer  "severity"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160928211426) do
     t.string   "file"
     t.string   "line"
     t.string   "code"
+    t.integer  "user_id"
   end
 
   add_index "issues", ["repo_id"], name: "index_issues_on_repo_id"
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160928211426) do
     t.integer  "repo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "scans", ["repo_id"], name: "index_scans_on_repo_id"

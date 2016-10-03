@@ -6,8 +6,7 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
-    # remove these?
+    @issues = Issue.where(:user_id => current_user.id)
   end
 
   # GET /issues/1
@@ -66,11 +65,14 @@ class IssuesController < ApplicationController
 
   def publish
     @issue = Issue.find(params[:id])
-    # @repos = Repo.all
     @publish_repo  = Repo.find(@issue.repo_id)
     # check if access token
-    user_github = Octokit::Client.new(:access_token => current_user.access_token)
-    @result = user_github.create_issue("#{@publish_repo.owner}/#{@publish_repo.name}", @issue.description, render_to_string("github_issue"))
+    if current_user.access_token
+      user_github = Octokit::Client.new(:access_token => current_user.access_token)
+      @result = user_github.create_issue("#{@publish_repo.owner}/#{@publish_repo.name}", @issue.description, render_to_string("github_issue"))
+    else
+      @result = nil
+    end
   end
 
   private
@@ -81,6 +83,6 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:severity, :source, :description, :detail, :fingerprint, :scan_id)
+      params.require(:issue).permit(:severity, :source, :description, :detail, :fingerprint, :scan_id, :user_id)
     end
 end

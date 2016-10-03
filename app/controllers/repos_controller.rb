@@ -1,5 +1,6 @@
 class ReposController < ApplicationController
   before_action :set_repo, only: [:show, :edit, :update, :destroy]
+  include ScansHelper
 
   # GET /repos
   # GET /repos.json
@@ -32,13 +33,13 @@ class ReposController < ApplicationController
   # POST /repos.json
   def create
     params = Repo.get_repo(repo_params[:name], repo_params[:owner])
-    params[:user_id] = current_user.id
     if params == nil
       puts "@@@ Found bad url"
       @user.errors[:base] << "fail"
       redirect_to root_path and return
     end
-
+    
+    params[:user_id] = current_user.id
     @repo = Repo.new(params)
 
     respond_to do |format|
@@ -76,6 +77,37 @@ class ReposController < ApplicationController
     end
   end
 
+  def actions
+    repos = Repo.find(params[:repo_ids])
+
+    if params[:delete]
+      repos.each do |repo|
+        repo.destroy
+      end
+      redirect_to :back, notice: 'Repos were successfully deleted.' 
+    end
+
+    if params[:scan]
+      @scans = []
+      repos.each do |repo|
+        @scan = ScansHelper.scan(repo, current_user)
+        @scans.push(@scan)
+      end
+
+      #check to see if any errors while scanning
+      redirect_to :back, notice: 'Scans created.'
+      # respond_to do |format|
+      #   if @scan.save
+      #     format.html { redirect_to @scan, notice: 'Scans were successfully created.' }
+      #     format.json { render :show, status: :created, location: @scan }
+      #   else
+      #     format.html { render :new }
+      #     format.json { render json: @scan.errors, status: :unprocessable_entity }
+      #   end
+      # end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_repo
@@ -84,6 +116,6 @@ class ReposController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def repo_params
-      params.require(:repo).permit(:name, :owner, :html_url, :description, :language, :size, :user_id)
+      params.require(:repo).permit(:name, :owner, :html_url, :description, :language, :size, :user_id, :repo_ids => [])
     end
 end

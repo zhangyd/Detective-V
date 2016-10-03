@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   get 'issues/publish/:id' => 'issues#publish', as: :publish_issues
   match 'users/settings/' => 'users#settings', as: :user_settings, via: [:get, :post]
-
+  match 'repos/actions' => 'repos#actions', as: :actions, via: [:get, :post]
 end
