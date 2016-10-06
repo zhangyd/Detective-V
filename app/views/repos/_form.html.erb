@@ -12,29 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :github_url%><br/>
+    <%= f.text_field :html_url, required: true %>
   </div>
-  <div class="field">
-    <%= f.label :owner %><br>
-    <%= f.text_field :owner %>
-  </div>
-  <!-- <div class="field">
-    <%= f.label :html_url %><br>
-    <%= f.text_field :html_url %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :language %><br>
-    <%= f.text_field :language %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.number_field :size %>
-  </div> -->
+
   <div class="actions">
     <%= f.submit %>
   </div>

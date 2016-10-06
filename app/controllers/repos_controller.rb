@@ -32,7 +32,7 @@ class ReposController < ApplicationController
   # POST /repos
   # POST /repos.json
   def create
-    params = Repo.get_repo(repo_params[:name], repo_params[:owner])
+    params = Repo.get_repo(repo_params[:html_url])
     if params == nil
       puts "@@@ Found bad url"
       @user.errors[:base] << "fail"

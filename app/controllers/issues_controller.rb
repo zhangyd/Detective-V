@@ -7,7 +7,6 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     @issues = Issue.where(:user_id => current_user.id)
-    binding.pry
   end
 
   # GET /issues/1

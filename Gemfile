@@ -26,6 +26,8 @@ gem 'bootstrap-will_paginate', '0.0.10'
 
 gem 'bootstrap-sass',          '3.3.6'
 
+gem 'bootstrap_form'
+
 gem 'puma',                    '3.4.0'
 
 gem 'coffee-rails',            '4.2.1'
