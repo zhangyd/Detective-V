@@ -3,12 +3,13 @@
 
 <p> Go <a href="https://github.com/settings/tokens">here</a> to create a token! </p>
 
-<%= form_for @user, url: user_settings_path, html: {class: "token_form"}, method: :post do |f| %>
+<div class="form" id="user_token_form">
+	<%= bootstrap_form_for @user, url: user_settings_path, html: {class: "token_form"}, method: :post do |f| %>
 
     <div class="field">
-      <%= f.label :access_token %><br />
-      <%= f.text_field :access_token, placeholder: '40 character token'%>
+      <%= f.text_field :access_token, placeholder: '40 character token', label: "Access Token"%>
     </div> 
 
-  <%= f.submit "Add Token" %>
-<% end %>
+  	<%= f.submit "Add Token" %>
+	<% end %>
+</div>
