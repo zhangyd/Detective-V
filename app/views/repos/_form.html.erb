@@ -1,4 +1,4 @@
-<%= form_for(@repo) do |f| %>
+<%= bootstrap_form_for(@repo) do |f| %>
   <% if @repo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@repo.errors.count, "error") %> prohibited this repo from being saved:</h2>
@@ -11,31 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="field" id="add_repo_field">
+    <%= f.url_field :html_url, required: true, label: "Github Url" %>
   </div>
-  <div class="field">
-    <%= f.label :owner %><br>
-    <%= f.text_field :owner %>
-  </div>
-  <!-- <div class="field">
-    <%= f.label :html_url %><br>
-    <%= f.text_field :html_url %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :language %><br>
-    <%= f.text_field :language %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.number_field :size %>
-  </div> -->
-  <div class="actions">
+
+  <div class="actions" id="add_repo_submit">
     <%= f.submit %>
   </div>
 <% end %>

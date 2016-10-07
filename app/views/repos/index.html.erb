@@ -4,7 +4,7 @@
  
 <% if current_user %>
 	<table>
-		<%= form_tag actions_path, method: :post do %>
+		<%= bootstrap_form_tag actions_path, method: :post do %>
 			<% @repos.each do |repo| %>
 			<tr>
 				<td><%= check_box_tag("repo_ids[]", repo.id) %></td>
