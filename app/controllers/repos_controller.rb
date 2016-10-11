@@ -38,7 +38,7 @@ class ReposController < ApplicationController
       @user.errors[:base] << "fail"
       redirect_to root_path and return
     end
-    
+
     params[:user_id] = current_user.id
     @repo = Repo.new(params)
 
@@ -84,7 +84,7 @@ class ReposController < ApplicationController
       repos.each do |repo|
         repo.destroy
       end
-      redirect_to :back, notice: 'Repos were successfully deleted.' 
+      redirect_to :back, notice: 'Repos were successfully deleted.'
     end
 
     if params[:scan]
@@ -94,8 +94,13 @@ class ReposController < ApplicationController
         @scans.push(@scan)
       end
 
+      Rails.cache.write("repos", repos)
+
+      redirect_to url_for(:controller => :scans, :action => :index)
+
       #check to see if any errors while scanning
-      redirect_to :back, notice: 'Scans created.'
+      # redirect_to :back, notice: 'Scans created.'
+
       # respond_to do |format|
       #   if @scan.save
       #     format.html { redirect_to @scan, notice: 'Scans were successfully created.' }

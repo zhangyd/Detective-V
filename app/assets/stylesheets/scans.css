@@ -1,0 +1,9 @@
+.scan-result-page h4 {
+	margin: 25px 0px;
+}
+
+.scan-result-page tbody a:hover {
+	background: none;
+	text-decoration: none;
+}
+

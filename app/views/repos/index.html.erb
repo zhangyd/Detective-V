@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>My Repos</h1>
- 
+
 <% if current_user %>
 	<table>
-		<%= form_tag actions_path, method: :post do %>
+		<%= bootstrap_form_tag url: actions_path do %>
 			<% @repos.each do |repo| %>
 			<tr>
 				<td><%= check_box_tag("repo_ids[]", repo.id) %></td>
 				<td><%= repo.owner + "/" + repo.name %></td>
-			</tr>   
+			</tr>
 			<% end %>
 			<%= submit_tag "Delete", name: 'delete' %>
 			<%= submit_tag "Scan Selected", name: 'scan' %>

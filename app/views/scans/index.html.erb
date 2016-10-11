@@ -1,29 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Scans</h1>
+<div class="scan-result-page">
 
-<table>
-  <thead>
-    <tr>
-      <th>Status</th>
-      <th>Repo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1>Scans Completed</h1>
 
-  <tbody>
-    <% @scans.each do |scan| %>
+  <h4>Number of Repositories Scaned: <%= @repos.count %></h4>
+
+
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= scan.status %></td>
-        <td><%= scan.repo.name %></td>
-        <td><%= link_to 'Show', scan %></td>
-        <td><%= link_to 'Edit', edit_scan_path(scan) %></td>
-        <td><%= link_to 'Destroy', scan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Repo</th>
+        <th>Status</th>
+        <th>Number of Vulnerabilities</th>
+        <th>Detail</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @repos.each do |repo| %>
+        <tr>
+          <td><%= repo.owner %>/<%= repo.name %></td>
+          <td><%= repo.scans.last.status %></td>
+          <td><%= repo.scans.last.issues.count %></td>
+          <td><%= link_to "report", repo.scans.last %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Scan', new_scan_path %>
+</div>
