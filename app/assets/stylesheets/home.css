@@ -2,6 +2,10 @@
 	text-align: center;
 }
 
+.project-description {
+	text-align: left;
+}
+
 .un-logged-in p {
 	line-height: 1.7em;
 	padding: 20px;
