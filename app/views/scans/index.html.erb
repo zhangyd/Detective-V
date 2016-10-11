@@ -18,7 +18,7 @@
     </thead>
 
     <tbody>
-      <% @repos.each do |repo| %>
+      <% @srepos.each do |repo| %>
         <tr>
           <td><%= repo.owner %>/<%= repo.name %></td>
           <td><%= repo.scans.last.status %></td>

@@ -5,7 +5,7 @@ class ScansController < ApplicationController
   # GET /scans.json
   def index
     # @scans = Scan.where(:user_id => current_user.id)
-    @repos = Rails.cache.read("repos")
+    @srepos = Rails.cache.read("repos")
   end
 
   # GET /scans/1

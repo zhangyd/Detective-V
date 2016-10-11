@@ -14,13 +14,15 @@
 	  <tr>
 	    <th>Severity</th>
 	    <th>Description</th>
+	    <th>Detail</th>
 	  </tr>
 	</thead>
 	<tbody>
 		<% @issues.each_with_index do |issue, index| %>
-		  <tr class="<%= 'danger' if issue.severity == 2 %> <%= 'warning' if issue.severity == 1 %>" data-toggle="modal" data-target="#issues_modal_<%= index %>">
+		  <tr class="<%= 'danger' if issue.severity == 3 %> <%= 'warning' if issue.severity == 2 %> <%= 'info' if issue.severity == 1 %>" data-toggle="modal" data-target="#issues_modal_<%= index %>">
 		    <td><%= issue.severity %></td>
 		    <td><%= issue.description %></td>
+		    <td>View</td>
 
         <%= render :partial => "issues", :locals => { :issue => issue, :index => index }  %>
 
