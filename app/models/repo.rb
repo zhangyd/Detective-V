@@ -8,7 +8,6 @@ class Repo < ActiveRecord::Base
 	has_many :issues, dependent: :destroy
 
 	def self.get_repo url
-		# first check url exists
 		parsed_url = url.split('/')
 		full_name = parsed_url[-2] + "/" + parsed_url[-1]
 		params = {}

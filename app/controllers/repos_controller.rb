@@ -32,6 +32,10 @@ class ReposController < ApplicationController
   # POST /repos
   # POST /repos.json
   def create
+    # if Repo.where(:html_url => (repo_params[:html_url])).where(:user_id => current_user).exists?
+    #   redirect_to :back, notice: 'Repo already exists'
+    # end
+
     params = Repo.get_repo(repo_params[:html_url])
     if params == nil
       puts "@@@ Found bad url"
@@ -96,15 +100,6 @@ class ReposController < ApplicationController
 
       #check to see if any errors while scanning
       redirect_to :back, notice: 'Scans created.'
-      # respond_to do |format|
-      #   if @scan.save
-      #     format.html { redirect_to @scan, notice: 'Scans were successfully created.' }
-      #     format.json { render :show, status: :created, location: @scan }
-      #   else
-      #     format.html { render :new }
-      #     format.json { render json: @scan.errors, status: :unprocessable_entity }
-      #   end
-      # end
     end
   end
 
