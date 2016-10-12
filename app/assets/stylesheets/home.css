@@ -3,7 +3,12 @@
 }
 
 .project-description {
-	text-align: left;
+	width: 75%;
+	margin: auto;
+}
+
+.project-description p {
+	font-size: 1.2em;
 }
 
 .un-logged-in p {
@@ -19,3 +24,6 @@
 	display: inline;
 }
 
+.logo{
+	padding: 10px !important;
+}

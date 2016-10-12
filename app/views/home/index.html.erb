@@ -3,9 +3,7 @@
 
 		<%= image_tag("logo.png", :alt => "logo") %>
     <div class="project-description">
-  		<p>After extensive research on current dependency check tools, we discovered that there are few existing tools that allow users to manage the security status of a large number of repositories. This tool needs to target a breadth of programming languages, many different project owners, and across different teams of developers. To address this issue, we designed a web application that runs a pipeline of static analysis tools on projects to uncover security vulnerabilities.</p>
-
-      <p>Our application focuses on streamlining security managers’ workflow of managing multiple repositories. Users can authorize through Github with just a couple of simple clicks and can initiate the security scanning process on any number of target projects. This is followed by straightforward reports detailing vulnerabilities discovered, with a feature to provide instant feedback to the project owner. The importance of this feedback is to connect security-focused users and general software developers to establish efficient feedback loop.</p>
+  		<p>Leverage open-source projects in your code and concerned with security? Let Detective V handle your dependency security for you!</p>
     </div>
 
 		<h4>Ready to get started?</h4>
@@ -18,38 +16,22 @@
 
 	<div class="home-container">
 		<h2 >My Projects Summary</h2>
-		<%= link_to "New Scan", new_scan_path, class: "btn btn-default pull-right" %>
+		<%= link_to "New Scan", repos_path, class: "btn btn-default pull-right" %>
 	</div>
 
 	<table class="table table-striped">
     <tbody>
       <tr>
-        <th>Num Projects</th>
+        <th>Number of Projects</th>
         <td><%= current_user.repos.count %></td>
       </tr>
       <tr>
-        <th>Num Scans</th>
+        <th>Number of Scans</th>
         <td><%= current_user.scans.count %></td>
       </tr>
       <tr>
-        <th>Num Issues</th>
+        <th>Number of Issues</th>
         <td><%= current_user.issues.count %></td>
-      </tr>
-      <tr>
-        <th>Severe Issues</th>
-        <td>...</td>
-      </tr>
-      <tr>
-        <th>Popular Repos</th>
-        <td>...</td>
-      </tr>
-      <tr>
-        <th>...</th>
-        <td>...</td>
-      </tr>
-			<tr>
-        <th>...</th>
-        <td>...</td>
       </tr>
     </tbody>
 	</table>
