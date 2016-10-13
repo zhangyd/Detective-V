@@ -1,18 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>My Repos</h1>
- 
-<% if current_user %>
-	<table>
-		<%= bootstrap_form_tag url: actions_path do %>
-			<% @repos.each do |repo| %>
-			<tr>
-				<td><%= check_box_tag("repo_ids[]", repo.id) %></td>
-				<td><%= repo.owner + "/" + repo.name %></td>
-			</tr>   
+<div class="overlay">
+    <div id="loading-img"></div>
+</div>
+
+<div class="repo-index-page">
+
+	<h1>My Repositories</h1>
+
+	<h4>Select from the following list to run dependency checks.</h4>
+
+	<% if current_user %>
+		<table class="table">
+			<%= bootstrap_form_tag url: actions_path do %>
+				<% @repos.each do |repo| %>
+				<tr>
+					<td><%= check_box_tag("repo_ids[]", repo.id) %></td>
+					<td><%= repo.owner + "/" + repo.name %></td>
+				</tr>
+				<% end %>
+				<%= submit_tag "Delete", name: 'delete', :class => "btn btn-default" %>
+				<%= submit_tag "Scan Selected", name: 'scan', :id => "scan-button", :class => "btn btn-default" %>
 			<% end %>
-			<%= submit_tag "Delete", name: 'delete' %>
-			<%= submit_tag "Scan Selected", name: 'scan' %>
-		<% end %>
-	</table>
-<% end %>
+		</table>
+	<% end %>
+
+</div>

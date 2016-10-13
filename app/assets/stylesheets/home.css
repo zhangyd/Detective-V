@@ -2,6 +2,15 @@
 	text-align: center;
 }
 
+.project-description {
+	width: 75%;
+	margin: auto;
+}
+
+.project-description p {
+	font-size: 1.2em;
+}
+
 .un-logged-in p {
 	line-height: 1.7em;
 	padding: 20px;
@@ -13,4 +22,8 @@
 
 .home-container h2 {
 	display: inline;
+}
+
+.logo{
+	padding: 10px !important;
 }
