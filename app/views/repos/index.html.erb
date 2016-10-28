@@ -20,7 +20,9 @@
 				</tr>
 				<% end %>
 				<%= submit_tag "Delete", name: 'delete', :class => "btn btn-default" %>
-				<%= submit_tag "Scan Selected", name: 'scan', :id => "scan-button", :class => "btn btn-default" %>
+				<% if current_user.access_token? %>
+					<%= submit_tag "Scan Selected", name: 'scan', :id => "scan-button", :class => "btn btn-default" %>
+				<% end %>
 			<% end %>
 		</table>
 	<% end %>
