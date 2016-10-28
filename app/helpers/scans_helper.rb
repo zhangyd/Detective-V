@@ -1,6 +1,7 @@
 module ScansHelper
 
 	def self.scan repo, user
+
 	  tasks = []
 	  lang = repo.language
 	  status = "No known vulnerabilities"
@@ -11,15 +12,15 @@ module ScansHelper
       user_id: user.id
     )
 
-    if lang == nil
-    else
+    if lang != nil
       tasks = Settings.pipeline.tasks_for[lang].split(",")
     end
+    # byebug
 
     logfile = File.open(Rails.root.join("log/scans"), 'a')
     logfile.sync = true
 
-    ApplicationHelper.inside_github_archive(repo) do |dir|
+    ApplicationHelper.inside_github_archive(repo, user) do |dir|
       pipeline_options = {
         :appname => repo.name,
         :target => "#{dir}",
