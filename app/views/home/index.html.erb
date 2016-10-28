@@ -3,7 +3,7 @@
 
 		<%= image_tag("detectiveV.png", :alt => "logo") %>
     <div class="project-description">
-  		<p>Are you concerned with security in your open-source software? Let Detective V handle your dependency security for you!</p>
+  		<p>Are you concerned with security in your open-source software? Let Detective V handle your dependencies for you!</p>
     </div>
 
 		<h4>Ready to get started?</h4>
@@ -15,14 +15,14 @@
 <% else %>
 
 	<div class="home-container">
-		<h2 >My Projects Summary</h2>
+		<h2>User Summary</h2>
 		<%= link_to "New Scan", repos_path, class: "btn btn-default pull-right" %>
 	</div>
 
 	<table class="table table-striped">
     <tbody>
       <tr>
-        <th>Number of Projects</th>
+        <th>Number of Repositories</th>
         <td><%= current_user.repos.count %></td>
       </tr>
       <tr>

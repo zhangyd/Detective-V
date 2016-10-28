@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
 <h1>User Settings</h1></br>
 
-<p> Go <a href="https://github.com/settings/tokens">here</a> to create a token! </p>
+<p>Visit this <a href="https://github.com/settings/tokens">link</a> to create a new Github token. </p>
+
+<% if current_user.access_token? %>
+	<p>You currently have a stored access token. Adding a new token will replace your existing one.</p>
+<% end %>
 
 <div class="form" id="user_token_form">
 	<%= bootstrap_form_for @user, url: user_settings_path, html: {class: "token_form"}, method: :post do |f| %>
 
-    <div class="field">
-      <%= f.text_field :access_token, placeholder: '40 character token', label: "Access Token"%>
+    <div class="field" style="width:250px">
+      <%= f.password_field :access_token, placeholder: '40 character token', label: "Access Token"%>
     </div> 
 
   	<%= f.submit "Add Token" %>

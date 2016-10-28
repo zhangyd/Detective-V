@@ -3,14 +3,23 @@ require 'tempfile'
 
 module ApplicationHelper
 
-	def self.github
-		return Octokit::Client.new(:access_token => Settings.github.api_access_token)
+	def self.github curr
+    if (curr != nil) && curr.access_token?
+		  return Octokit::Client.new(:access_token => curr.access_token)
+    else
+      return nil
+    end
 	end
 
-  def self.inside_github_archive repo
+  def self.inside_github_archive repo, current_user
     dir = Dir.mktmpdir
     filename = Dir::Tmpname.make_tmpname(['detective_v', '.tar.gz'], nil)
-    archive_link = self.github.archive_link(repo.owner + "/" + repo.name)
+    begin
+      archive_link = self.github(current_user).archive_link(repo.owner + "/" + repo.name)
+    rescue Exception => e
+      Rails.logger.error "Error with Octokit api access_token"
+      raise e
+    end
 
     IO.copy_stream(open(archive_link), "#{dir}/#{filename}")
 

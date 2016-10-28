@@ -7,7 +7,7 @@ class Repo < ActiveRecord::Base
 	has_many :scans, dependent: :destroy
 	has_many :issues, dependent: :destroy
 
-	def self.get_repo url
+	def self.get_repo url, current_user
 		# first check url exists
 		parsed_url = url.split('/')
 		full_name = parsed_url[-2] + "/" + parsed_url[-1]
@@ -18,7 +18,8 @@ class Repo < ActiveRecord::Base
 		res = req.request_head(url.path)
 
 		if res.code == "200"
-			github = ApplicationHelper.github
+			github = ApplicationHelper.github(current_user)
+			binding.pry
 			git_repo = github.repo(full_name)
 			params = {
 				name: parsed_url[-1], 
