@@ -19,7 +19,6 @@ class Repo < ActiveRecord::Base
 
 		if res.code == "200"
 			github = ApplicationHelper.github(current_user)
-			binding.pry
 			git_repo = github.repo(full_name)
 			params = {
 				name: parsed_url[-1], 
