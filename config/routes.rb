@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'users/auth/github' => "callbacks#github", as: :github
   # resources :issues #Don't need any of the issue routes...
-  resources :scans, :only => [:show, :index]
+  resources :scans, :only => [:show, :index, :destroy]
   resources :repos, :only => [:index, :show, :new, :create, :destroy]
 
   get 'issues/publish/:id' => 'issues#publish', as: :publish_issues

@@ -66,10 +66,8 @@ class IssuesController < ApplicationController
   def publish
     begin
       github = ApplicationHelper.github(current_user)
-      github.check_application_authorization(current_user.access_token)
-    rescue Exception
-      Rails.logger.error "Error with Octokit api access_token"
-      redirect_to :back, notice: 'Error with Octokit api access_token.'
+      if (github == nil)
+       redirect_to :back, notice: 'Error with Octokit api access_token.'
       return
     end
     @issue = Issue.find(params[:id])

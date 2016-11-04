@@ -9,8 +9,7 @@
   <%= @scan.status %>
 </p>
 
-<%= button_to "Delete", {:controller => :scans,
-      :action => 'destroy', :id => @scan.id }, :method => :delete, class: "btn btn-default"%>
+<%= button_to "Delete", {:controller => :scans, :action => 'destroy', :id => @scan.id }, :method => :delete, class: "btn btn-default"%>
 
 <table class="table">
 	<thead>

@@ -32,11 +32,14 @@ class ReposController < ApplicationController
   # POST /repos
   # POST /repos.json
   def create
-    params = Repo.get_repo(repo_params[:html_url], current_user)
+    url = repo_params[:html_url]
+    params = Repo.get_repo(url, current_user)
     if params == nil
-      puts "@@@ Found bad url"
-      @user.errors[:base] << "fail"
-      redirect_to root_path and return
+      redirect_to :back, notice: 'Error with API access token.'
+      return
+    end
+    if params == -1
+      redirect_to :back, alert: 'Repo already exists' and return
     end
 
     params[:user_id] = current_user.id
@@ -82,11 +85,10 @@ class ReposController < ApplicationController
     # Before proceeding, check if github token is valid
     begin
       github = ApplicationHelper.github(current_user)
-      github.check_application_authorization(current_user.access_token)
-    rescue Exception
-      Rails.logger.error "Error with Octokit api access_token"
-      redirect_to :back, notice: 'Error with Octokit api access_token.'
-      return
+      if (github == nil)
+        redirect_to :back, notice: 'Error with Octokit api access_token.'
+        return
+      end
     end
 
     if params[:delete]
@@ -108,8 +110,6 @@ class ReposController < ApplicationController
       redirect_to url_for(:controller => :scans, :action => :index)
 
       #check to see if any errors while scanning
-      # redirect_to :back, notice: 'Scans created.'
-
       # respond_to do |format|
       #   if @scan.save
       #     format.html { redirect_to @scan, notice: 'Scans were successfully created.' }

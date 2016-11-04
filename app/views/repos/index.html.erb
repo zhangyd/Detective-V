@@ -1,5 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<%= javascript_tag do %>
+	window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+	}
+<% end %>
+
 <div class="overlay">
     <div id="loading-img"></div>
 </div>
@@ -8,23 +17,23 @@
 
 	<h1>My Repositories</h1>
 
-	<h4>Select from the following list to run dependency checks.</h4>
+	<h4>Select from the following list to scan for dependencies.</h4>
 
-	<% if current_user %>
+	<% if current_user && ((Repo.where(user_id: current_user.id).size()) > 0) %>
 		<table class="table">
-			<%= bootstrap_form_tag url: actions_path do %>
+			<%= form_tag(actions_path, :method => 'post') do %>
 				<% @repos.each do |repo| %>
 				<tr>
 					<td><%= check_box_tag("repo_ids[]", repo.id) %></td>
 					<td><%= repo.owner + "/" + repo.name %></td>
 				</tr>
 				<% end %>
-				<%= submit_tag "Delete", name: 'delete', :class => "btn btn-default" %>
-				<% if current_user.access_token? %>
-					<%= submit_tag "Scan Selected", name: 'scan', :id => "scan-button", :class => "btn btn-default" %>
-				<% end %>
+				<%= submit_tag "Delete", name: 'delete', :class => "btn btn-default", 'data-disable-with' => "Delete" %>
+				<%= submit_tag "Scan Selected", name: 'scan', :id => "scan-button", :class => "btn btn-default", 'data-disable-with' => "Scan Selected" %>
 			<% end %>
 		</table>
+	<% else %>
+		<p>You currently have no repositories to scan.</p>
 	<% end %>
 
 </div>
