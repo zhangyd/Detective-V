@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
 	def settings
 		@user = current_user
 		# should be error checking for correct length

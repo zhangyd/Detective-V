@@ -11,7 +11,7 @@ class ScansController < ApplicationController
   # GET /scans/1
   # GET /scans/1.json
   def show
-    @issues = @scan.issues
+    @issues = @scan.issues.order(severity: :desc)
   end
 
   # GET /scans/new

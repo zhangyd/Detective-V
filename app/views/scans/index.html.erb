@@ -1,36 +1,29 @@
 <p id="notice"><%= notice %></p>
-
-<%= javascript_tag do %>
-  alert("Scan has completed!");
-<% end %>
-
 <div class="scan-result-page">
-
   <h1>Scans Completed</h1>
-
-  <h4>Number of Repositories Scanned: <%= @srepos.count %></h4>
-
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Repo</th>
-        <th>Status</th>
-        <th>Number of Vulnerabilities</th>
-        <th>Detail</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @srepos.each do |repo| %>
+  <% if current_user && ((Scan.where(user_id: current_user.id).size()) > 0) %>
+    <h4>Number of Repositories Scanned: <%= @srepos.count %></h4>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= repo.owner %>/<%= repo.name %></td>
-          <td><%= repo.scans.last.status %></td>
-          <td><%= repo.scans.last.issues.count %></td>
-          <td><%= link_to "report", repo.scans.last %></td>
+          <th>Repo</th>
+          <th>Status</th>
+          <th>Number of Vulnerabilities</th>
+          <th>Detail</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+      </thead>
+      <tbody>
+        <% @srepos.each do |repo| %>
+          <tr>
+            <td><%= repo.owner %>/<%= repo.name %></td>
+            <td><%= repo.scans.last.status %></td>
+            <td><%= repo.scans.last.issues.count %></td>
+            <td><%= link_to "report", repo.scans.last %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No scans created yet.</p>
+  <% end %>
 </div>
