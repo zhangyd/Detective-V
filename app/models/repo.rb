@@ -7,7 +7,14 @@ class Repo < ActiveRecord::Base
 	has_many :scans, dependent: :destroy
 	has_many :issues, dependent: :destroy
 
+
+  after_destroy { |record|
+    Scan.destroy(record.scans.pluck(:id))
+    Issue.destroy(recond.issues.pluck(:id))
+  }
+
 	def self.get_repo url, current_user
+		# first check url exists
 		parsed_url = url.split('/')
 		
 		# if repo already exists
@@ -23,7 +30,10 @@ class Repo < ActiveRecord::Base
 		res = req.request_head(url.path)
 
 		if res.code == "200"
-			github = ApplicationHelper.github
+			github = ApplicationHelper.github(current_user)
+			if (github == nil)
+				return nil
+			end
 			git_repo = github.repo(full_name)
 			params = {
 				name: parsed_url[-1].downcase, 

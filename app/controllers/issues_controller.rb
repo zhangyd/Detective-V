@@ -64,14 +64,21 @@ class IssuesController < ApplicationController
   end
 
   def publish
+    begin
+      github = ApplicationHelper.github(current_user)
+      if (github == nil)
+       redirect_to :back, notice: 'Error with Octokit api access_token.'
+      return
+    end
     @issue = Issue.find(params[:id])
     @publish_repo  = Repo.find(@issue.repo_id)
     # check if access token
-    if current_user.access_token
+    if current_user.access_token == "" or current_user.access_token.nil?
+      redirect_to :back, notice: 'Need valid GitHub Access Token in User Settings to Publish Issues' and return
+    else
       user_github = Octokit::Client.new(:access_token => current_user.access_token)
       @result = user_github.create_issue("#{@publish_repo.owner}/#{@publish_repo.name}", @issue.description, render_to_string("github_issue"))
-    else
-      @result = nil
+      redirect_to :back, notice: 'Issue Created' and return
     end
   end
 

@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:github]
+  validates :access_token, length: { is: 40,
+    wrong_length: "You entered %{count} characters, access tokens are 40 characters"  }
+
+  after_destroy { |record|
+    Repo.destroy(record.repos.pluck(:id))
+  }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

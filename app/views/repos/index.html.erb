@@ -8,9 +8,9 @@
 
 	<h1>My Repositories</h1>
 
-	<h4>Select from the following list to run dependency checks.</h4>
+	<h4>Select from the following list to scan for dependencies.</h4>
 
-	<% if current_user %>
+	<% if current_user && ((Repo.where(user_id: current_user.id).size()) > 0) %>
 		<table class="table">
 			<%= form_tag(actions_path, :method => 'post') do %>
 				<% @repos.each do |repo| %>
@@ -23,6 +23,8 @@
 				<%= submit_tag "Scan Selected", name: 'scan', :id => "scan-button", :class => "btn btn-default", 'data-disable-with' => "Scan Selected" %>
 			<% end %>
 		</table>
+	<% else %>
+		<p>You currently have no repositories to scan.</p>
 	<% end %>
 
 </div>

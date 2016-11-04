@@ -35,9 +35,8 @@ class ReposController < ApplicationController
     url = repo_params[:html_url]
     params = Repo.get_repo(url, current_user)
     if params == nil
-      puts "@@@ Found bad url"
-      @user.errors[:base] << "fail"
-      redirect_to root_path and return
+      redirect_to :back, notice: 'Error with API access token.'
+      return
     end
     if params == -1
       redirect_to :back, alert: 'Repo already exists' and return
@@ -83,6 +82,14 @@ class ReposController < ApplicationController
 
   def actions
     repos = Repo.find(params[:repo_ids])
+    # Before proceeding, check if github token is valid
+    begin
+      github = ApplicationHelper.github(current_user)
+      if (github == nil)
+        redirect_to :back, notice: 'Error with Octokit api access_token.'
+        return
+      end
+    end
 
     if params[:delete]
       repos.each do |repo|
