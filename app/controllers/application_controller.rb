@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :get_repos
 
   # method to check users first
-
 	def get_repos
 		if current_user.nil?
 			@repos = Repo.where(:user_id => nil)

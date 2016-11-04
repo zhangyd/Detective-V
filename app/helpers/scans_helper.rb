@@ -15,7 +15,6 @@ module ScansHelper
     if lang != nil
       tasks = Settings.pipeline.tasks_for[lang].split(",")
     end
-    # byebug
 
     logfile = File.open(Rails.root.join("log/scans"), 'a')
     logfile.sync = true
