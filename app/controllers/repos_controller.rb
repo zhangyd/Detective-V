@@ -34,9 +34,8 @@ class ReposController < ApplicationController
   def create
     params = Repo.get_repo(repo_params[:html_url], current_user)
     if params == nil
-      puts "@@@ Found bad url"
-      @user.errors[:base] << "fail"
-      redirect_to root_path and return
+      redirect_to :back, notice: 'Error with API access token.'
+      return
     end
 
     params[:user_id] = current_user.id
@@ -82,11 +81,10 @@ class ReposController < ApplicationController
     # Before proceeding, check if github token is valid
     begin
       github = ApplicationHelper.github(current_user)
-      github.check_application_authorization(current_user.access_token)
-    rescue Exception
-      Rails.logger.error "Error with Octokit api access_token"
-      redirect_to :back, notice: 'Error with Octokit api access_token.'
-      return
+      if (github == nil)
+        redirect_to :back, notice: 'Error with Octokit api access_token.'
+        return
+      end
     end
 
     if params[:delete]
