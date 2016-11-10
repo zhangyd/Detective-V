@@ -109,6 +109,8 @@ class ReposController < ApplicationController
 
       redirect_to url_for(:controller => :scans, :action => :index)
 
+      UserNotifier.scan_done_email(current_user, repos).deliver
+
       #check to see if any errors while scanning
       # respond_to do |format|
       #   if @scan.save
